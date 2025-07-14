@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[Cares]
+(
+	[Id] INT IDENTITY NOT NULL PRIMARY KEY,
+	[Title] NVARCHAR(50) NOT NULL,
+	[Care_date] DATE NOT NULL,
+	[Medic_id] INT NOT NULL, 
+	CONSTRAINT [PK_Cares_Medic_id] FOREIGN KEY ([Medic_id])
+		REFERENCES [Medic]([Id])
+)

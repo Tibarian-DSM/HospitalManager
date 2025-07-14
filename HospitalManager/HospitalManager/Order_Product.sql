@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Order_Product]
+(
+	[Id] INT IDENTITY NOT NULL PRIMARY KEY,
+	[Quantity] INT NOT NULL DEFAULT 1,
+	[Product_Id] INT NOT NULL, 
+	[Order_Id] INT NOT NULL, 
+	CONSTRAINT [FK_OP_Product_Id] FOREIGN KEY ([Product_Id])
+		REFERENCES [Product]([Id]),
+	CONSTRAINT [FK_OP_Order_Id] FOREIGN KEY ([Order_Id])
+		REFERENCES [Order]([Id])
+)

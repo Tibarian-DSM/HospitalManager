@@ -1,0 +1,6 @@
+@HospitalManager.API_HostAddress = http://localhost:5242
+
+GET {{HospitalManager.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Product]
+(
+	[Id] INT IDENTITY NOT NULL PRIMARY KEY,
+	[Name] NVARCHAR(50) NOT NULL,
+	[IsAvailable] BIT NOT NULL, 
+	CONSTRAINT [UK_Product_Name] UNIQUE ([Name])
+)

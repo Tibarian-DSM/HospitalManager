@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Service]
+(
+	[Id] INT IDENTITY NOT NULL PRIMARY KEY, 
+	[Name] NVARCHAR(50) NOT NULL, 
+	CONSTRAINT [UK_Service_Name] UNIQUE ([Name])
+)

@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[0]API", "[0]API", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[1]BLL", "[1]BLL", "{EFCDB840-20CC-4E0A-9AD7-F015398CA6BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[2]DAL", "[2]DAL", "{2533A581-744F-4B9F-AC18-39BAE6DAAB36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[3]DbCreator", "[3]DbCreator", "{4DAF202B-0224-4EDB-BD02-F6D44F83A8F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{14CD40A5-BB4E-4E15-A2AA-CBFEC6199071}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "HospitalManager", "HospitalManager\HospitalManager.sqlproj", "{670E27C3-22BB-4C53-85D4-36E616CF7F68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalManager.API", "HospitalManager.API\HospitalManager.API.csproj", "{4F77D47F-DF03-47F2-9FB7-E27287CF1D2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalManager.BLL", "HospitalManager.BLL\HospitalManager.BLL.csproj", "{AAF96B59-24C3-42EB-8F8A-BEB3B89B7B05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalManager.DAL", "HospitalManager.DAL\HospitalManager.DAL.csproj", "{9713DE9A-81C3-447C-A113-5BCF9082BDAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADOTools", "ADOTools\ADOTools.csproj", "{952008FE-3BA7-45B8-A81C-1294967A7CCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{670E27C3-22BB-4C53-85D4-36E616CF7F68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{670E27C3-22BB-4C53-85D4-36E616CF7F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{670E27C3-22BB-4C53-85D4-36E616CF7F68}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{670E27C3-22BB-4C53-85D4-36E616CF7F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{670E27C3-22BB-4C53-85D4-36E616CF7F68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{670E27C3-22BB-4C53-85D4-36E616CF7F68}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4F77D47F-DF03-47F2-9FB7-E27287CF1D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F77D47F-DF03-47F2-9FB7-E27287CF1D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F77D47F-DF03-47F2-9FB7-E27287CF1D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F77D47F-DF03-47F2-9FB7-E27287CF1D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF96B59-24C3-42EB-8F8A-BEB3B89B7B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF96B59-24C3-42EB-8F8A-BEB3B89B7B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF96B59-24C3-42EB-8F8A-BEB3B89B7B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF96B59-24C3-42EB-8F8A-BEB3B89B7B05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9713DE9A-81C3-447C-A113-5BCF9082BDAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9713DE9A-81C3-447C-A113-5BCF9082BDAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9713DE9A-81C3-447C-A113-5BCF9082BDAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9713DE9A-81C3-447C-A113-5BCF9082BDAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{952008FE-3BA7-45B8-A81C-1294967A7CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{952008FE-3BA7-45B8-A81C-1294967A7CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{952008FE-3BA7-45B8-A81C-1294967A7CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{952008FE-3BA7-45B8-A81C-1294967A7CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{670E27C3-22BB-4C53-85D4-36E616CF7F68} = {4DAF202B-0224-4EDB-BD02-F6D44F83A8F1}
+		{4F77D47F-DF03-47F2-9FB7-E27287CF1D2D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{AAF96B59-24C3-42EB-8F8A-BEB3B89B7B05} = {EFCDB840-20CC-4E0A-9AD7-F015398CA6BA}
+		{9713DE9A-81C3-447C-A113-5BCF9082BDAD} = {2533A581-744F-4B9F-AC18-39BAE6DAAB36}
+		{952008FE-3BA7-45B8-A81C-1294967A7CCB} = {14CD40A5-BB4E-4E15-A2AA-CBFEC6199071}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {172DC7EC-D79D-47A4-9A35-0CE40034CBC3}
+	EndGlobalSection
+EndGlobal

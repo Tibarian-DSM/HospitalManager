@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Patient]
+(
+	[Id] INT IDENTITY NOT NULL PRIMARY KEY, 
+	[PhoneNumber] VARBINARY(50) NOT NULL,
+	[Adress] VARBINARY(128) NOT NULL,
+	[BirthDate] VARBINARY(32) NOT NULL,
+	[MedicalInfo] VARBINARY(2048) NOT NULL,
+	[User_Id] INT NOT NULL,
+	CONSTRAINT [FK_Patient_User_Id] FOREIGN KEY ([User_Id])
+			REFERENCES [User]([Id])
+)
