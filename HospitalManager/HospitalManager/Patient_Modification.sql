@@ -5,7 +5,7 @@
 	[Patient_Id] INT NOT NULL, 
 	[Employee_Id] INT NOT NULL, 
 	CONSTRAINT [FK_PM_Patient_Id] FOREIGN KEY ([Patient_Id])
-		REFERENCES [Patient]([Id]),
+		REFERENCES [Patient]([User_Id]),
 	CONSTRAINT [FK_PM_Employee_Id] FOREIGN KEY ([Employee_Id])
-		REFERENCES [Employee]([Id])
+		REFERENCES [Employee]([User_Id])
 )

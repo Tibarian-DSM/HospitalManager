@@ -26,7 +26,7 @@ namespace ADOTools
             return sqlCommand;
         }
 
-        public object? ExecuteScalar(Command command)
+        public object? ExecScalar(Command command)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {

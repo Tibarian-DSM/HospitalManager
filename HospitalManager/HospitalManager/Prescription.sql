@@ -9,6 +9,6 @@
 	CONSTRAINT [PK_Presc_Medic_Id] FOREIGN KEY ([Medic_Id])
 		REFERENCES [Medic]([Id]),
 	CONSTRAINT [PK_Presc_Patient_Id] FOREIGN KEY ([Patient_Id])
-		REFERENCES [Patient]([Id])
+		REFERENCES [Patient]([User_Id])
 
 )

@@ -10,5 +10,7 @@ namespace HospitalManager.DAL.Interfaces
     public interface IAuthRepository
     {
         void RegisterUser(User user);
+        string GetPassword(string email);
+        GotUser GetUserByEmail(string email);
     }
 }

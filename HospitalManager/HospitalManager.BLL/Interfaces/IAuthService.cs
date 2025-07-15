@@ -10,5 +10,6 @@ namespace HospitalManager.BLL.Interfaces
     public interface IAuthService
     {
         void RegisterUser(User user);
+        GotUser Login(string username, string password);
     }
 }

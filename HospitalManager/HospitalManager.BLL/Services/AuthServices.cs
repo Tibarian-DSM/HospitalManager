@@ -18,6 +18,28 @@ namespace HospitalManager.BLL.Services
         {
             _authRepository = authRepository;
         }
+
+        public GotUser Login(string email, string password)
+        {
+            try
+            {
+                string hashedPsw = _authRepository.GetPassword(email);
+
+                if(!BCrypt.Net.BCrypt.Verify(password,hashedPsw))
+                    {
+                        throw new Exception("Incorrect password");
+                    }
+                BLL.Models.GotUser user = _authRepository.GetUserByEmail(email).DalToBLL();
+
+                return user;
+
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw new ArgumentException("Email incorrect");
+            }
+        }
+
         public void RegisterUser(User user)
         {
            string hashPsw = BCrypt.Net.BCrypt.HashPassword(user.Password);

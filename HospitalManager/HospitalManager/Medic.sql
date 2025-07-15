@@ -6,5 +6,5 @@
 	[Is_Subsized] BIT  NOT NULL,
 	[Employee_Id] INT NOT NULL, 
 	CONSTRAINT [FK_Medic_Employee_Id] FOREIGN KEY ([Employee_Id])
-			REFERENCES [Employee]([Id])
+			REFERENCES [Employee]([User_id])
 )

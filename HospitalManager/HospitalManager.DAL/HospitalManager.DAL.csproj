@@ -10,8 +10,4 @@
     <ProjectReference Include="..\ADOTools\ADOTools.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Mappers\" />
-  </ItemGroup>
-
 </Project>

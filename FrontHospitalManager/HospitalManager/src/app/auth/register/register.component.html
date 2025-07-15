@@ -1,0 +1,68 @@
+<div id="register">
+<form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+
+
+    <label for="firstname">Prénom</label>
+    <input formControlName="firstname"
+     type="text"
+     [ngClass]="{
+        'is-valid': registerForm.get('firstname')?.valid && registerForm.get('firstname')?.touched,
+        'is-invalid': registerForm.get('firstname')?.invalid && registerForm.get('firstname')?.touched}">
+    @if( registerForm.get('firstname')?.touched && registerForm.get('firstname')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( registerForm.get('firstname')?.touched && registerForm.get('firstname')?.errors?.['maxlength'])
+    {
+        <span class="error-msg"> Limité à 100 caractères</span>
+    }
+
+      <label for="lastname">Nom</label>
+    <input formControlName="lastname"
+     type="text"
+     [ngClass]="{
+        'is-valid': registerForm.get('lastname')?.valid && registerForm.get('lastname')?.touched,
+        'is-invalid': registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched}">
+    @if( registerForm.get('lastname')?.touched && registerForm.get('lastname')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( registerForm.get('lastname')?.touched && registerForm.get('lastname')?.errors?.['maxlength'])
+    {
+        <span class="error-msg">Limité à 100 caractères</span>
+    }
+
+    <label for="email">Email</label>
+    <input formControlName="email"
+     type="email"
+     [ngClass]="{
+        'is-valid': registerForm.get('email')?.valid && registerForm.get('email')?.touched,
+        'is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}">
+    @if( registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['email'])
+    {
+        <span class="error-msg">Email invalide</span>
+    }
+
+    <label for="password">Mot de passe</label>
+    <input formControlName="password"
+     type="password"
+     [ngClass]="{
+        'is-valid': registerForm.get('password')?.valid && registerForm.get('password')?.touched,
+        'is-invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
+    @if( registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['pattern'])
+    {
+        <span class="error-msg"> le mot de passe doit faire minimum 8 caractère avec minuscules, majuscules, numeros et caractère speciaux</span>
+    }
+
+
+    <button class="blue" type="submit" [disabled]="registerForm.invalid">Valider</button>
+</form>
+</div>

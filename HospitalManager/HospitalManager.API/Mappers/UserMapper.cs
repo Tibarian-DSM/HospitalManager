@@ -16,5 +16,17 @@ namespace HospitalManager.API.Mappers
                 Password = form.Password
             };
         }
+
+        public static API.Models.User BllToApi(BLL.Models.GotUser user)
+        {
+            return new API.Models.User()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Role = user.Role
+            };
+        }
     }
 }
