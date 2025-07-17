@@ -1,0 +1,26 @@
+<nav>
+    <div id="home-part">
+        <a routerLink="" id="home-link">Home</a>
+    </div>
+
+    <div id="features-part">
+    @if(auth.isAdmin())
+    {
+        <button (click)="redirectAdminDisplayUser()">Liste des utilisateurs</button>
+    }
+
+    </div>
+
+    <div id="auth-part">
+    @if(auth.isConnected())
+    {
+
+        <button (click)="logout()">Se déconnecter</button>
+    }
+    @else{
+        <button (click)="redirectLogin()">Se connecter</button>
+        <button (click)="redirectRegister()">S'enregistrer</button>
+
+    }
+    </div>
+</nav>

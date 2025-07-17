@@ -1,0 +1,25 @@
+<h2>Utilisateurs</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(user of users; track user.id)
+        {
+            <tr>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.role}}</td>
+                <td> A definir</td>
+            </tr>
+        }
+    </tbody>
+</table>

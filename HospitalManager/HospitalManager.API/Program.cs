@@ -65,6 +65,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IAuthService, AuthServices >();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+
 builder.Services.AddSingleton(sp => new Connection(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddSingleton<TokenManager>();
 
@@ -83,6 +86,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
         };
     });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

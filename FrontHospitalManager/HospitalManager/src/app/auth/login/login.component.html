@@ -1,0 +1,38 @@
+<h2>Login</h2>
+<div id="login">
+<form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+<label for="email">Email</label>
+    <input formControlName="email"
+     type="email"
+     [ngClass]="{
+        'is-valid': loginForm.get('email')?.valid && loginForm.get('email')?.touched,
+        'is-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}">
+    @if( loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email'])
+    {
+        <span class="error-msg">Email invalide</span>
+    }
+
+    <label for="password">Mot de passe</label>
+    <input formControlName="password"
+     type="password"
+     [ngClass]="{
+        'is-valid': loginForm.get('password')?.valid && loginForm.get('password')?.touched,
+        'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}">
+    @if( loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['minlength'])
+    {
+        <span class="error-msg"> le mot de passe doit faire minimum 8 caractère avec minuscules, majuscules, numeros et caractère speciaux</span>
+    }
+
+
+    <button class="blue" type="submit" [disabled]="loginForm.invalid">Valider</button>
+
+</form>
+</div>
