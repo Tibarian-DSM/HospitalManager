@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using HospitalManager.API.Models;
 using HospitalManager.BLL.Models;
 using HospitalManager.API.Mappers;
+using HospitalManager.API.Models.Dtos;
+using HospitalManager.BLL.Services;
 
 namespace HospitalManager.API.Controllers
 {
@@ -16,6 +18,7 @@ namespace HospitalManager.API.Controllers
     public class AdminController : ControllerBase
     {
         private IAdminService _adminService;
+
 
         public AdminController(IAdminService service)
         {
@@ -41,6 +44,8 @@ namespace HospitalManager.API.Controllers
             return Ok(users);
 
         }
+
+        
     }
 
 

@@ -13,6 +13,7 @@ namespace HospitalManager.DAL.Mappers.AuthMapper
     {
         public static GotUser DbToDal(this IDataRecord record)
         {
+
             return new GotUser()
             {
                 Id = (int)record["Id"],

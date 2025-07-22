@@ -1,6 +1,8 @@
 using ADOTools;
 using HospitalManager.API.Token;
+using HospitalManager.BLL;
 using HospitalManager.BLL.Interfaces;
+using HospitalManager.BLL.Mappers;
 using HospitalManager.BLL.Services;
 using HospitalManager.DAL.Interfaces;
 using HospitalManager.DAL.Repositories;
@@ -12,6 +14,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile("secrets.json", optional: false, reloadOnChange: true);
+
+Dictionary<string,string> secrets = builder.Configuration.Get<Dictionary<string,string>>();
+Encryption.init(secrets);
+PatientFileMapper.init(secrets);
 
 builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
 {
@@ -68,8 +75,13 @@ builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 
+builder.Services.AddScoped<IPatientServices,PatientService>();
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+
 builder.Services.AddSingleton(sp => new Connection(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddSingleton<TokenManager>();
+
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

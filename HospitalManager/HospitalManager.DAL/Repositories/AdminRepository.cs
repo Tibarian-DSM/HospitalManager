@@ -32,5 +32,7 @@ namespace HospitalManager.DAL.Repositories
             return users;
 
         }
+
+        
     }
 }
