@@ -78,8 +78,12 @@ builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IPatientServices,PatientService>();
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 
+
+
 builder.Services.AddSingleton(sp => new Connection(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddSingleton<TokenManager>();
+
+
 
 
 
