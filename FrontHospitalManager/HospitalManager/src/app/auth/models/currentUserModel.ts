@@ -5,5 +5,4 @@ export interface currentUser
     lastName:string,
     email:string,
     role:string
-
 }

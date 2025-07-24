@@ -78,13 +78,11 @@ builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IPatientServices,PatientService>();
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 
-
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddSingleton(sp => new Connection(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddSingleton<TokenManager>();
-
-
-
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

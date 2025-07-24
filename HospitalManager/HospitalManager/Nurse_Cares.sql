@@ -4,7 +4,7 @@
 	[Nurse_id] INT NOT NULL,
 	[Cares_id] INT NOT NULL,
 	CONSTRAINT [PK_NC_Nurse_Id] FOREIGN KEY ([Nurse_id])
-		REFERENCES [Nurse]([User_Id]),
+		REFERENCES [Nurse]([User_Id]) ON DELETE SET NULL,
 	CONSTRAINT [PK_NC_Cares_id] FOREIGN KEY ([Cares_id])
-		REFERENCES [Cares]([Id])
+		REFERENCES [Cares]([Id]) ON DELETE CASCADE
 )

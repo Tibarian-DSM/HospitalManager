@@ -7,5 +7,5 @@
 	[MedicalInfo] VARBINARY(2048) NOT NULL,
 
 	CONSTRAINT [FK_Patient_User_Id] FOREIGN KEY ([User_Id])
-			REFERENCES [User]([Id])
+			REFERENCES [User]([Id]) ON DELETE CASCADE
 )

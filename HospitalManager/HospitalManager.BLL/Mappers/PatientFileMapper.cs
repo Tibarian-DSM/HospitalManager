@@ -71,6 +71,30 @@ namespace HospitalManager.BLL.Mappers
                 MedicalInfo = Encryption.Decrypt(file.MedicalInfo, _aesKey, patientIv),
             };
         }
-            
+
+        public static DAL.Entities.PatientFile UpdateBllToDal(this PatientFile file)
+        {
+
+            Dictionary<string, string> ivDict = Encryption.getIvDictonnary();
+
+            string userIdKey = file.User_id.ToString();
+
+            if (!ivDict.ContainsKey(userIdKey))
+            {
+                throw new KeyNotFoundException($"Aucun IV correspondant trouvé.");
+            }
+
+            byte[] patientIv = Convert.FromBase64String(ivDict[userIdKey]);
+
+            return new DAL.Entities.PatientFile()
+            {
+                User_id = file.User_id,
+                PhoneNumber = Encryption.Encrypt(file.PhoneNumber, _aesKey, patientIv),
+                Adress = Encryption.Encrypt(file.Adress, _aesKey, patientIv),
+                Birthdate = Encryption.Encrypt(file.Birthdate.ToString("dd/MM/yyyy"), _aesKey, patientIv),
+                MedicalInfo = Encryption.Encrypt(file.MedicalInfo, _aesKey, patientIv),
+            };
+        }
+
     }   
 }

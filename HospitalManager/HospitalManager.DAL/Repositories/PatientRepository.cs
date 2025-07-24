@@ -43,5 +43,31 @@ namespace HospitalManager.DAL.Repositories
 
             return _connection.ExecReader(cmd, er => er.PatientDbToDal()).SingleOrDefault();
         }
+
+        public void UpdatePatient (PatientFile file , int modifierId)
+        {
+            DateTime updateDate = DateTime.Now;
+
+            Command cmd = new Command("UPDATE [dbo].[Patient] " +
+                                        "SET [PhoneNumber] = @PhoneNumber , " +
+                                        "[Adress] = @Adress , " +
+                                        "[BirthDate] = @BirthDate , " +
+                                        "[MedicalInfo] = @MedicalInfo ");
+
+            cmd.AddParameter("PhoneNumber",file.PhoneNumber);
+            cmd.AddParameter("Adress", file.Adress);
+            cmd.AddParameter("BirthDate", file.Birthdate);
+            cmd.AddParameter("MedicalInfo", file.MedicalInfo);
+
+            Command Hcmd = new Command("INSERT INTO [dbo].[Patient_Modification]([UpdateDate] , [Patient_Id] , [Employee_Id]) " +
+                                         " VALUES (@UpdateDate , @Patient_Id , @User_id)");
+
+            Hcmd.AddParameter("UpdateDate", updateDate);
+            Hcmd.AddParameter("Patient_Id", file.User_id);
+            Hcmd.AddParameter("User_Id", modifierId);
+
+            _connection.ExecNonQuery(cmd);
+            _connection.ExecNonQuery(Hcmd);
+        }
     }
 }

@@ -5,7 +5,7 @@
 	[Product_Id] INT NOT NULL, 
 	[Order_Id] INT NOT NULL, 
 	CONSTRAINT [FK_OP_Product_Id] FOREIGN KEY ([Product_Id])
-		REFERENCES [Product]([Id]),
+		REFERENCES [Product]([Id]) ON DELETE SET NULL,
 	CONSTRAINT [FK_OP_Order_Id] FOREIGN KEY ([Order_Id])
-		REFERENCES [Order]([Id])
+		REFERENCES [Order]([Id])ON DELETE CASCADE
 )

@@ -17,7 +17,7 @@ namespace HospitalManager.API.Mappers
             };
         }
 
-        public static API.Models.User BllToApi(BLL.Models.GotUser user)
+        public static API.Models.User BllToApi(this BLL.Models.GotUser user)
         {
             return new API.Models.User()
             {

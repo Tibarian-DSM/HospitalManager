@@ -12,5 +12,7 @@ namespace HospitalManager.DAL.Interfaces
 
         public PatientFile? GetPatientFile(int id);
         public void AddNewPatientFile(PatientFile file);
+
+        public void UpdatePatient(PatientFile file, int modifierId);
     }
 }

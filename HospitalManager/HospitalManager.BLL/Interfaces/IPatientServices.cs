@@ -13,5 +13,7 @@ namespace HospitalManager.BLL.Interfaces
         public void AddNewPatientFile(Models.PatientFile patientFile);
 
         public Models.PatientFile? GetPatient(int id);
+
+        public void UpdatePatient(Models.PatientFile file, int modifierId);
     }
 }

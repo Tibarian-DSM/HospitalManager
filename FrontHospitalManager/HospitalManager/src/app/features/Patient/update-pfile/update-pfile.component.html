@@ -1,0 +1,72 @@
+
+<div id="update-patient">
+<form  [formGroup]="patientForm" (ngSubmit)="PatientFileSubmit()">
+    <label for="phoneNumber">Telephone</label>
+    <input formControlName="phoneNumber"
+     type="text"
+     [ngClass]="{
+        'is-valid': patientForm.get('phoneNumber')?.valid && patientForm.get('phoneNumber')?.touched,
+        'is-invalid': patientForm.get('phoneNumber')?.invalid && patientForm.get('phoneNumber')?.touched}">
+    @if( patientForm.get('phoneNumber')?.touched && patientForm.get('phoneNumber')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( patientForm.get('phoneNumber')?.touched && patientForm.get('phoneNumber')?.errors?.['maxLength'])
+    {
+        <span class="error-msg"> Limité à 15 caractères</span>
+    }
+        @if( patientForm.get('phoneNumber')?.touched && patientForm.get('phoneNumber')?.errors?.['pattern'])
+    {
+        <span class="error-msg"> Format non valide </span>
+    }
+
+
+    <label for="adress">Adresse</label>
+    <input formControlName="adress"
+     type="text"
+     [ngClass]="{
+        'is-valid': patientForm.get('adress')?.valid && patientForm.get('adress')?.touched,
+        'is-invalid': patientForm.get('adress')?.invalid && patientForm.get('adress')?.touched}">
+    @if( patientForm.get('adress')?.touched && patientForm.get('adress')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( patientForm.get('adress')?.touched && patientForm.get('adress')?.errors?.['maxLength'])
+    {
+        <span class="error-msg"> Limité à 100 caractères</span>
+    }
+
+    <label for="birthdate">Année de naissance</label>
+    <input formControlName="birthdate"
+     type="date"
+     [ngClass]="{
+        'is-valid': patientForm.get('birthdate')?.valid && patientForm.get('birthdate')?.touched,
+        'is-invalid': patientForm.get('birthdate')?.invalid && patientForm.get('birthdate')?.touched}">
+    @if( patientForm.get('adress')?.touched && patientForm.get('adress')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( patientForm.get('birthdate')?.touched && patientForm.get('birthdate')?.errors?.['notInFutureValidator'])
+    {
+        <span class="error-msg"> Date non valide</span>
+    }
+
+    <label for="medicalInfo">Informations médicales</label>
+    <textarea formControlName="medicalInfo"
+    
+        [ngClass]="{
+        'is-valid': patientForm.get('medicalInfo')?.valid && patientForm.get('medicalInfo')?.touched,
+        'is-invalid': patientForm.get('medicalInfo')?.invalid && patientForm.get('medicalInfo')?.touched}">
+</textarea>
+    @if( patientForm.get('medicalInfo')?.touched && patientForm.get('medicalInfo')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( patientForm.get('medicalInfo')?.touched && patientForm.get('medicalInfo')?.errors?.['maxLength'])
+    {
+        <span class="error-msg"> Limité à 1500 caractères</span>
+    }
+        <button class="blue" type="submit">Valider</button>
+
+    </form>
+</div>

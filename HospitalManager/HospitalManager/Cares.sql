@@ -5,5 +5,5 @@
 	[Care_date] DATE NOT NULL,
 	[Medic_id] INT NOT NULL, 
 	CONSTRAINT [PK_Cares_Medic_id] FOREIGN KEY ([Medic_id])
-		REFERENCES [Medic]([Id])
+		REFERENCES [Medic]([User_Id]) ON DELETE SET NULL
 )

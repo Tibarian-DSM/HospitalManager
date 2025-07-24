@@ -5,5 +5,5 @@
 	[HireDate] DATE NOT NULL, 
 	[ContractEnd] DATE, 
 	CONSTRAINT [FK_Employee_User_Id] FOREIGN KEY ([User_Id]) 
-			REFERENCES [User]([Id])
+			REFERENCES [User]([Id])ON DELETE CASCADE
 )

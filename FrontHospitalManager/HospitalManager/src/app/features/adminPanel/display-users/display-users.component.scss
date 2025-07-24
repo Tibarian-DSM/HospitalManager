@@ -1,0 +1,59 @@
+#user-list {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+} 
+
+#sort-buttons
+{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    button{
+
+        font-size: 15px;
+        font-weight: bold;
+        height: 50px;
+    }
+}
+ table
+  {
+    border: solid gray;
+    border-collapse: collapse;
+    width: 80%;
+    margin: 2% 5%;
+  }
+
+  th
+  {
+    border: solid gray 2px;
+    
+  }
+
+  td
+  {
+    padding: 5px;
+    border: solid gray 2px;
+  }
+
+  .Admin
+  {
+    background-color: #c65d5d;
+  }
+
+  .Medic
+  {
+    background-color: #5786bc;
+    color : white
+  }
+
+  .Nurse
+  {
+    background-color: #4f7b51;
+  }
+
+  .Patient
+  {
+    background-color: #b0adad;
+  }

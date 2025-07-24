@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environnement } from '../../../../environement/environement';
 import { HttpClient } from '@angular/common/http';
-import { basicUser } from '../models/basicUserModel';
+import { basicUser } from '../../User/Models/basicUserModel';
 import { Observable } from 'rxjs';
 import { API_CONST } from '../../../core/api.constants';
 import { currentUser } from '../../../auth/models/currentUserModel';

@@ -6,7 +6,7 @@ export const nurseGuard: CanActivateFn = (route, state) => {
       const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (authService.isAdmin()) {
+  if (authService.isAdmin()|| authService.isNurse()) {
     return true;
   } else {
     router.navigate(['/']);

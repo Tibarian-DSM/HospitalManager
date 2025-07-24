@@ -2,6 +2,7 @@
 using HospitalManager.API.Models;
 using HospitalManager.API.Models.Dtos;
 using HospitalManager.BLL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace HospitalManager.API.Controllers
         }
 
         [HttpPost("AddNewPatientFile/{id}")]
+        [Authorize(Roles = "Admin,Medic,Nurse")]
         public IActionResult AddNewPatientFile(int id, [FromBody] PatientFileForm form)
         {
             try
@@ -42,6 +44,7 @@ namespace HospitalManager.API.Controllers
         }
 
         [HttpGet("GetPatientFile/{id}")]
+        [Authorize(Roles = "Admin,Medic,Nurse")]
         public IActionResult GetPatientFile(int id)
         {
             try
@@ -57,6 +60,26 @@ namespace HospitalManager.API.Controllers
                 return BadRequest(e.Message);
             }
 
+        }
+
+        [HttpPatch(("UpdatePatient/{id}"))]
+
+        public IActionResult UpdatePatient(int id , [FromBody] PatientUpdateForm form)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                _patientServices.UpdatePatient(form.UpdateApiToBll(),id);
+
+                return Ok(new { message = "Dossier patient modifié avec succès !" });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

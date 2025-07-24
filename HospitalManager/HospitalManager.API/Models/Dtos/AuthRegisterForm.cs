@@ -15,7 +15,7 @@ namespace HospitalManager.API.Models.Dtos
         public required string LastName { get; set; }
         [Required]
         [MinLength(10)]
-        [MaxLength(25)]
+        [MaxLength(320)]
 
         // regex : adresse mail , @ obligatoire , point necessaire pour l'extension et extension minimun 2 lettre
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Adresse email invalide.")]

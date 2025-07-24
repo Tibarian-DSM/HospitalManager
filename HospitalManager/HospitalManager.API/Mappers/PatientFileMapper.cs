@@ -30,5 +30,17 @@ namespace HospitalManager.API.Mappers
             };
         }
 
+        public static BLL.Models.PatientFile UpdateApiToBll(this PatientUpdateForm patient)
+        {
+            return new BLL.Models.PatientFile()
+            {
+                User_id = patient.User_id,
+                PhoneNumber = patient.PhoneNumber,
+                Adress = patient.Adress,
+                Birthdate = patient.Birthdate,
+                MedicalInfo = patient.MedicalInfo
+            };
+        }
+
     }
 }

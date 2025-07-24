@@ -1,4 +1,13 @@
+<div id="users-list">
 <h2>Utilisateurs</h2>
+<div id="sort-buttons">
+
+    <button (click)="getAll()">Tout</button>
+    <button (click)="getByRole('Medic')">Medecins</button>
+    <button (click)="getByRole('Nurse')">Infirmiers</button>
+    <button (click)="getByRole('Patient')">Patient</button>
+
+</div>
 
 <table>
     <thead>
@@ -13,13 +22,23 @@
     <tbody>
         @for(user of users; track user.id)
         {
-            <tr>
+            <tr class={{user.role}}>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.role}}</td>
-                <td> A definir</td>
+                <td> 
+                    @if(user.role == 'Patient')
+                    {
+                       <button (click)="detailsPatient(user.id)">🔎</button> 
+                       <button (click)="modifierPatient(user.id)">🖍</button>
+                    }
+                    @else {
+                        <p>à définir</p>
+                    }
+                </td>
             </tr>
         }
     </tbody>
 </table>
+</div>

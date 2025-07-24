@@ -1,5 +1,6 @@
 ﻿using HospitalManager.BLL.Interfaces;
 using HospitalManager.BLL.Mappers;
+using HospitalManager.BLL.Models;
 using HospitalManager.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,11 @@ namespace HospitalManager.BLL.Services
             }
 
             return patient.DalToBll();
+        }
+
+        public void UpdatePatient(PatientFile file, int modifierId)
+        {
+            _patientRepository.UpdatePatient(file.UpdateBllToDal(), modifierId);
         }
     }
 }
