@@ -67,6 +67,19 @@
 
 #details
 {
-    display: flex;
-    flex-direction: column;
+   background-color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+
+    p {
+      margin-bottom: 0.7rem;
+    }
+
+    h4 {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #1e5799;
+    }
 }

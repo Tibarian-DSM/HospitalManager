@@ -1,0 +1,25 @@
+<div class="doctor-card">
+@if(medic)
+{
+  <h3 class="doctor-name">Dr. {{ medic.firstName }} {{ medic.lastName }}</h3>
+  <p class="email"> {{ medic.email }}</p>
+
+  <hr />
+
+  <section class="info-section">
+    <h4>Informations professionnelles</h4>
+    <p><strong>Numéro INAMI :</strong> {{ medic.inami }}</p>
+    <p><strong>Service :</strong> {{ medic.service }}</p>
+    <p><strong>Spécialité :</strong> {{ medic.speciality }}</p>
+    <p><strong>Subventionné :</strong> {{ medic.is_Subsized ? 'Oui' : 'Non' }}</p>
+  </section>
+
+  <section class="info-section">
+    <h4>Informations contractuelles</h4>
+    <p><strong>Type de contrat :</strong> {{ medic.contract }}</p>
+    <p><strong>Date de début :</strong> {{ medic.hireDate | date:'dd/MM/yyyy' }}</p>
+    <p><strong>Date de fin :</strong> {{ medic.contractEnd | date:'dd/MM/yyyy' }}</p>
+  </section>
+}
+</div>
+

@@ -21,5 +21,28 @@ export const API_CONST =
     {
         getUserById: "User/GetUserById",
         getUsersByRole:"User/GetUsersByRole"
+    },
+
+    Medic:
+    {
+        addNewMedic:"Medic/AddNewMedic",
+       getMedicDetails:"Medic/getMedicDetails",
+       getMedicByService:"Medic/getMedicsByService"
+    },
+
+    Service:
+    {
+        addNewService:"Service/AddNewService",
+        getAllServices:"Service/GetAllServices",
+        deleteService:"Service/RemoveService"
+    },
+
+    Appointement:
+    {
+        createAppointement:"Appointement/createAppointement",
+        getAppointementById:"Appointement/getAppointementById",
+        getAppointementsByMedicId:"Appointement/getAppointementsByMedicId",
+         getAppointementsByPatientId:"Appointement/getAppointementsByPatientId"
+
     }
 }

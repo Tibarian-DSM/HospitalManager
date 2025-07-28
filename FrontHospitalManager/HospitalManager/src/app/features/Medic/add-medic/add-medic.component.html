@@ -1,0 +1,150 @@
+<div id="medic-form">
+<form [formGroup]="medicForm" (ngSubmit)="addSubmit()">
+
+
+    <label for="firstname">Prénom</label>
+    <input formControlName="firstname"
+     type="text"
+     [ngClass]="{
+        'is-valid': medicForm.get('firstname')?.valid && medicForm.get('firstname')?.touched,
+        'is-invalid': medicForm.get('firstname')?.invalid && medicForm.get('firstname')?.touched}">
+    @if( medicForm.get('firstname')?.touched && medicForm.get('firstname')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( medicForm.get('firstname')?.touched && medicForm.get('firstname')?.errors?.['maxlength'])
+    {
+        <span class="error-msg"> Limité à 100 caractères</span>
+    }
+
+      <label for="lastname">Nom</label>
+    <input formControlName="lastname"
+     type="text"
+     [ngClass]="{
+        'is-valid': medicForm.get('lastname')?.valid && medicForm.get('lastname')?.touched,
+        'is-invalid': medicForm.get('lastname')?.invalid && medicForm.get('lastname')?.touched}">
+    @if( medicForm.get('lastname')?.touched && medicForm.get('lastname')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( medicForm.get('lastname')?.touched && medicForm.get('lastname')?.errors?.['maxlength'])
+    {
+        <span class="error-msg">Limité à 100 caractères</span>
+    }
+
+    <label for="email">Email</label>
+    <input formControlName="email"
+     type="email"
+     [ngClass]="{
+        'is-valid': medicForm.get('email')?.valid && medicForm.get('email')?.touched,
+        'is-invalid': medicForm.get('email')?.invalid && medicForm.get('email')?.touched}">
+    @if( medicForm.get('email')?.touched && medicForm.get('email')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( medicForm.get('email')?.touched && medicForm.get('email')?.errors?.['email'])
+    {
+        <span class="error-msg">Email invalide</span>
+    }
+
+    <label for="password">Mot de passe</label>
+    <input formControlName="password"
+     type="password"
+     [ngClass]="{
+        'is-valid': medicForm.get('password')?.valid && medicForm.get('password')?.touched,
+        'is-invalid': medicForm.get('password')?.invalid && medicForm.get('password')?.touched}">
+    @if( medicForm.get('password')?.touched && medicForm.get('password')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( medicForm.get('password')?.touched && medicForm.get('password')?.errors?.['pattern'])
+    {
+        <span class="error-msg"> le mot de passe doit faire minimum 8 caractère avec minuscules, majuscules, numeros et caractère speciaux</span>
+    }
+
+    <label for="service">Service:</label>
+    <select formControlName="service" id="service">
+        <option [value]="">Choissisez un service ...</option>
+        @for(serv of serviceList; track serv.id)
+        {
+            <option [value]="serv.id">{{serv.name}}</option>
+        }
+    </select>
+    @if( medicForm.get('service')?.touched && medicForm.get('servie')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+
+
+
+    <label for="speciality">Specialité</label>
+     <input formControlName="speciality"
+     type="text"
+     [ngClass]="{
+        'is-valid': medicForm.get('speciality')?.valid && medicForm.get('speciality')?.touched,
+        'is-invalid': medicForm.get('speciality')?.invalid && medicForm.get('speciality')?.touched}">
+    @if( medicForm.get('speciality')?.touched && medicForm.get('speciality')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( medicForm.get('speciality')?.touched && medicForm.get('speciality')?.errors?.['maxlength'])
+    {
+        <span class="error-msg"> Limité à 50 caractères</span>
+    }
+
+    <label for="contract">Type de contrat</label>
+     <input formControlName="contract"
+     type="text"
+     [ngClass]="{
+        'is-valid': medicForm.get('contract')?.valid && medicForm.get('contract')?.touched,
+        'is-invalid': medicForm.get('contract')?.invalid && medicForm.get('contract')?.touched}">
+    @if( medicForm.get('contract')?.touched && medicForm.get('contract')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( medicForm.get('contract')?.touched && medicForm.get('contract')?.errors?.['maxlength'])
+    {
+        <span class="error-msg"> Limité à 32 caractères</span>
+    }
+
+    <label for="hireDate">Date de début de contrat</label>
+     <input formControlName="hireDate"
+     type="date"
+     [ngClass]="{
+        'is-valid': medicForm.get('hireDate')?.valid && medicForm.get('hireDate')?.touched,
+        'is-invalid': medicForm.get('hireDate')?.invalid && medicForm.get('hireDate')?.touched}">
+    @if( medicForm.get('hireDate')?.touched && medicForm.get('hireDate')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+
+    <label for="contractEnd">Date de fin de contrat</label>
+     <input formControlName="contractEnd" type="date">
+     @if ( medicForm.get('contractEnd')?.touched && medicForm.get('contractEnd')?.errors?.['contractBeforeHire'])
+     {
+        <span class="error-msg">La date de fin ne peut pas être antérieure à la date d'embauche.</span>
+    }
+
+    <label for="inami">Numero inami</label>
+    <input formControlName="inami"
+     type="text"
+     [ngClass]="{
+        'is-valid': medicForm.get('inami')?.valid && medicForm.get('inami')?.touched,
+        'is-invalid': medicForm.get('inami')?.invalid && medicForm.get('inami')?.touched}">
+    @if( medicForm.get('inami')?.touched && medicForm.get('inami')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( medicForm.get('inami')?.touched && medicForm.get('inami')?.errors?.['pattern'])
+    {
+        <span class="error-msg"> le numero doit faire 11 caractère et ne doit être que des numéro</span>
+    }
+
+    <label for="is_Subsized">Subventionné ? </label>
+
+     <input formControlName="is_Subsized" type="checkbox">
+
+
+    <button class="blue" type="submit" [disabled]="medicForm.invalid">Valider</button>
+</form>
+</div>

@@ -1,0 +1,49 @@
+#medic-appointement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9fb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+table {
+  width: 90%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+
+  thead {
+    background-color: #0077cc;
+    color: white;
+
+    th {
+      padding: 1rem;
+      font-weight: 600;
+      text-align: left;
+      border-bottom: 2px solid #ddd;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #e0e0e0;
+
+      &:hover {
+        background-color: #f1faff;
+      }
+
+      td {
+        padding: 0.8rem 1rem;
+        color: #333;
+        border-bottom: 1px solid #eee;
+      }
+    }
+  }
+}

@@ -9,7 +9,8 @@ namespace HospitalManager.DAL.Interfaces
 {
     public interface IUserRepository
     {
-        GotUser getUserById(int id);
-        List<GotUser> getUsersByRole(string role);
+        public GotUser getUserById(int id);
+        public List<GotUser> getUsersByRole(string role);
+        public string queryNextId();
     }
 }

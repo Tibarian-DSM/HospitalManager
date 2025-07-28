@@ -6,7 +6,31 @@
     <div id="features-part">
     @if(auth.isAdmin())
     {
+        <div class="dropdown">
+            <button class="dropdown-btn" (click)="toogleMenu($event)">
+            Ajouter un employée
+            </button>
+
+            @if (menuOpen) 
+            {
+                <ul class="dropdown-menu">
+
+                    <li><a routerLink="/admin-add-medic">Ajouter un médecin</a></li>
+                </ul>
+            }
+      </div>
+
         <button (click)="redirectAdminDisplayUser()">Liste des utilisateurs</button>
+    }
+    @else if (auth.isPatient()) 
+    {
+        <button (click)="redirectDisplayMedic()">Liste des medecins</button>
+        <button (click)="redirectPatientAppointement()">Mes rendez-vous</button>
+    }
+    @else if (auth.isMedic()) 
+    {
+
+        <button (click)="redirectMedicAppointement()">Mes rendez-vous</button>
     }
 
     </div>

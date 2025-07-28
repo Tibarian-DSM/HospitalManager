@@ -33,6 +33,11 @@
                        <button (click)="detailsPatient(user.id)">🔎</button> 
                        <button (click)="modifierPatient(user.id)">🖍</button>
                     }
+                    @else if (user.role == 'Medic')
+                     {
+
+                        <button (click)="detailsMedic(user.id)">🔎</button> 
+                     }
                     @else {
                         <p>à définir</p>
                     }

@@ -1,0 +1,40 @@
+<div id="medic-list">
+<h2>Utilisateurs</h2>
+<div id="sort-buttons">
+
+@for(service of serviceList;track service.id)
+{
+    @if(service.id !== null)
+    {
+        <button (click)="changeServiceId(service.id)">{{service.name}}</button>
+    }
+}
+
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Spécialité</th>
+            <th>Subventionné</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(medic of medics; track medic.id)
+        {
+            <tr>
+                <td>{{medic.firstName}}</td>
+                <td>{{medic.lastName}}</td>
+                <td>{{medic.specialty}}</td>
+                <td>@if(medic.is_Subsized){Oui}@else {Non}</td>
+                <td> 
+                    <button (click)="redirectToAppointement(medic.id)">Prendre rendez-vous</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

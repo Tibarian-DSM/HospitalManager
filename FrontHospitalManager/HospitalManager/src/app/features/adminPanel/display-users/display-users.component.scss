@@ -1,59 +1,102 @@
 #user-list {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem;
-} 
-
-#sort-buttons
-{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-
-    button{
-
-        font-size: 15px;
-        font-weight: bold;
-        height: 50px;
-    }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9fb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
- table
-  {
-    border: solid gray;
-    border-collapse: collapse;
-    width: 80%;
-    margin: 2% 5%;
+
+#sort-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  button {
+    font-size: 0.95rem;
+    font-weight: 600;
+    height: 45px;
+    padding: 0 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #0077cc;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #005fa3;
+    }
+
+    &:focus {
+      outline: 2px solid #005fa3;
+    }
+  }
+}
+
+table {
+  width: 90%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+
+  thead {
+    background-color: #0077cc;
+    color: white;
+
+    th {
+      padding: 1rem;
+      font-weight: 600;
+      text-align: left;
+      border-bottom: 2px solid #ddd;
+    }
   }
 
-  th
-  {
-    border: solid gray 2px;
-    
-  }
+  tbody {
+    tr {
+      border-bottom: 1px solid #e0e0e0;
 
-  td
-  {
-    padding: 5px;
-    border: solid gray 2px;
-  }
+      &:hover {
+        background-color: #f1faff;
+      }
 
-  .Admin
-  {
-    background-color: #c65d5d;
+      td {
+        padding: 0.8rem 1rem;
+        color: #333;
+        border-bottom: 1px solid #eee;
+      }
+    }
   }
+}
 
-  .Medic
-  {
-    background-color: #5786bc;
-    color : white
-  }
+// Couleurs de rôles
+.Admin {
+  background-color: #c65d5d !important;
+  color: white;
+  font-weight: bold;
+}
 
-  .Nurse
-  {
-    background-color: #4f7b51;
-  }
+.Medic {
+  background-color: #5786bc !important;
+  color: white;
+  font-weight: bold;
+}
 
-  .Patient
-  {
-    background-color: #b0adad;
-  }
+.Nurse {
+  background-color: #4f7b51 !important;
+  color: white;
+  font-weight: bold;
+}
+
+.Patient {
+  background-color: #b0adad !important;
+  color: #222;
+  font-weight: bold;
+}

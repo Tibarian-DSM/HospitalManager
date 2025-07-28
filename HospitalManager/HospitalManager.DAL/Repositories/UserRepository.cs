@@ -44,5 +44,17 @@ namespace HospitalManager.DAL.Repositories
 
             return _connection.ExecReader(cmd, er=> er.DbToDal());
         }
+
+        public string queryNextId()
+        {
+            int id;
+            Command cmd = new Command("SELECT IDENT_CURRENT('User')");
+
+            id =  Convert.ToInt32(_connection.ExecScalar(cmd)); ;
+
+            id++;
+
+            return id.ToString();
+        }
     }
 }

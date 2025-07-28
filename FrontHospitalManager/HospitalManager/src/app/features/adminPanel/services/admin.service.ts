@@ -14,7 +14,7 @@ export class AdminService {
 
     private _apiUrl = environnement.apiUrl;
   
-  constructor(private _client:HttpClient , private _auth:AuthService) { }
+  constructor(private _client:HttpClient ) { }
 
   getAllUsers(): Observable<basicUser[]>
   {

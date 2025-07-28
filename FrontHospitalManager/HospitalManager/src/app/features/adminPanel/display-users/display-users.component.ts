@@ -31,6 +31,11 @@ detailsPatient(id:number)
   this.router.navigate(['/patient-info', id]);
 }
 
+detailsMedic(id:number)
+{
+  this.router.navigate(['/medic-details', id])
+}
+
 modifierPatient(id:number)
 {
   this.router.navigate(['/update-patient',id])

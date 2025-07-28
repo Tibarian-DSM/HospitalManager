@@ -1,0 +1,22 @@
+
+<div id="medic-appointement">
+<table>
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Sujet</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(ap of appointements; track ap.id)
+        {
+            <tr>
+                <td>{{ap.patientFirstName}} {{ap.patientLastName}}</td>
+                <td>{{ap.subject}}</td>
+                <td>{{ap.appointement_Date | date:'dd/MM/yyyy à HH:mm'}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

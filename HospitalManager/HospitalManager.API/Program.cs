@@ -1,4 +1,5 @@
 using ADOTools;
+using AspNetCoreRateLimit;
 using HospitalManager.API.Token;
 using HospitalManager.BLL;
 using HospitalManager.BLL.Interfaces;
@@ -19,6 +20,7 @@ builder.Configuration.AddJsonFile("secrets.json", optional: false, reloadOnChang
 Dictionary<string,string> secrets = builder.Configuration.Get<Dictionary<string,string>>();
 Encryption.init(secrets);
 PatientFileMapper.init(secrets);
+MedicMapper.init(secrets);
 
 builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
 {
@@ -81,6 +83,15 @@ builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+builder.Services.AddScoped<IMedicService, MedicService>();
+builder.Services.AddScoped<IMedicRepository, MedicRepository>();
+
+builder.Services.AddScoped<IServicesService, ServicesService>();
+builder.Services.AddScoped<IServicesRepository, ServicesRepository>();
+
+builder.Services.AddScoped<IAppointementRepository, AppointementRepository>();
+builder.Services.AddScoped<IAppointementService, AppointementService>();
+
 builder.Services.AddSingleton(sp => new Connection(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddSingleton<TokenManager>();
 
@@ -101,8 +112,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+#region Rate Limiting
+builder.Services.AddMemoryCache();
+builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
+builder.Services.AddInMemoryRateLimiting();
+builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+#endregion
 var app = builder.Build();
 
+
+app.UseIpRateLimiting();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

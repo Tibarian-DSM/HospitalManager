@@ -1,0 +1,41 @@
+<div id="appointement-form">
+<form [formGroup]="apForm" (ngSubmit)="AppointementSubmit()">
+
+  <label for="ap_date">Date :</label>
+  <input type="date" formControlName="ap_date">
+    @if( apForm.get('ap_date')?.touched && apForm.get('ap_date')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( apForm.get('birthdate')?.touched && apForm.get('birthdate')?.errors?.['notInPastValidator'])
+    {
+        <span class="error-msg"> Impossible de prendre un rendez-vous dans le passé</span>
+    }
+
+  <label for="ap_hour">Heure :</label>
+  <input type="time" id="time" formControlName="ap_hour">
+   @if( apForm.get('ap_hour')?.touched && apForm.get('ap_hour')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+
+
+    <label for="subject">Subject</label>
+    <textarea formControlName="subject"
+    
+        [ngClass]="{
+        'is-valid': apForm.get('subject')?.valid && apForm.get('subject')?.touched,
+        'is-invalid': apForm.get('subject')?.invalid && apForm.get('subject')?.touched}">
+    </textarea>
+
+    @if( apForm.get('subject')?.touched && apForm.get('subject')?.errors?.['required'])
+    {
+        <span class="error-msg"> Ce champ est requis</span>
+    }
+    @if( apForm.get('subject')?.touched && apForm.get('subject')?.errors?.['maxLength'])
+    {
+        <span class="error-msg"> Limité à 1500 caractères</span>
+    }
+        <button class="blue" type="submit">Valider</button>
+
+</form>

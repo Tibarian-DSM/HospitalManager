@@ -1,27 +1,125 @@
-nav{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(121, 220, 212);
-    width: 100%;
-    height: 50px;
-    #home-part
-    {
-        width: 20%;
-    }
-    
-#features-part {
+nav {
   display: flex;
-  gap: 20px; /* espace entre les liens */
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-}
+  background-color: #007b7f; // couleur bleu-vert professionnel et apaisant
+  padding: 0 20px;
+  height: 60px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 
-    #auth-part
-    {
-        display: flex;
-        justify-content: space-evenly;
-        width: 20%;
+  a, button {
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+
+    &:hover, &:focus {
+      color: #c0e9eb;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.1);
     }
+  }
+
+  #home-part {
+    width: 20%;
+
+    #home-link {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  #features-part {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+
+    .dropdown {
+      position: relative;
+
+      .dropdown-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background-color: transparent;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 4px;
+        padding: 8px 14px;
+        user-select: none;
+        transition: background-color 0.3s ease;
+
+        &:hover, &:focus {
+          background-color: rgba(255, 255, 255, 0.15);
+          outline: none;
+        }
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        background-color: #004d51;
+        border-radius: 6px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        min-width: 180px;
+        z-index: 1000;
+        padding: 8px 0;
+        list-style: none;
+
+        li {
+          a {
+            display: block;
+            padding: 10px 20px;
+            color: #c9f1f2;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+
+            &:hover, &:focus {
+              background-color: #02666c;
+              color: #e0f7f8;
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+
+    button:not(.dropdown-btn) {
+      background-color: #00999f;
+      border-radius: 4px;
+      padding: 8px 14px;
+
+      &:hover, &:focus {
+        background-color: #007b7f;
+      }
+    }
+  }
+
+  #auth-part {
+    display: flex;
+    gap: 15px;
+    width: 20%;
+    justify-content: flex-end;
+
+    button {
+      background-color: #00999f;
+      border-radius: 4px;
+      padding: 8px 14px;
+
+      &:hover, &:focus {
+        background-color: #007b7f;
+      }
+    }
+  }
 }

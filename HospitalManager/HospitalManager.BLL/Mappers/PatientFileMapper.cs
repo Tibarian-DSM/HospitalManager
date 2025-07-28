@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using HospitalManager.BLL;
 using System.Text.Json;
 using System.IO;
+using HospitalManager.DAL.Interfaces;
 
 namespace HospitalManager.BLL.Mappers
 {
@@ -12,6 +13,7 @@ namespace HospitalManager.BLL.Mappers
 
         private static string _keyPath;
         private static byte[] _aesKey;
+   
 
         public static void init(Dictionary<string, string> paths)
         {
@@ -19,6 +21,7 @@ namespace HospitalManager.BLL.Mappers
 
             _keyPath = _paths["PatientKeyPath"];
             _aesKey= File.ReadAllBytes(_keyPath);
+
         }
 
         public static DAL.Entities.PatientFile BllToDal( this PatientFile file)
