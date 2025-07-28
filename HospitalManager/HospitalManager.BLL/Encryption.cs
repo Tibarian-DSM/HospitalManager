@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -21,6 +22,7 @@ namespace HospitalManager.BLL
         // Le fichier Json encrypté
         private static string DictionaryIvPath;
 
+        #region Chargement des différent chemin de fichier
         public static void init(Dictionary<string, string> paths)
         {
             _paths = paths;
@@ -29,22 +31,29 @@ namespace HospitalManager.BLL
             ivDictPath = _paths["IvDictPath"];
             DictionaryIvPath = _paths["DictionaryIvPath"]; ;
         }
+        #endregion
 
+        #region fonction de chiffrage des données
         public static byte[] Encrypt(string info, byte[] key, byte[] iv)
         {
             byte[] cipher;
 
+            // Création d’un objet AES
             using (Aes aes = Aes.Create())
             {
+                // Création d’un transformateur de chiffrement avec la clé et le vecteur d’initialisation (IV)
                 ICryptoTransform encryptor = aes.CreateEncryptor(key, iv);
                 using (MemoryStream ms = new MemoryStream())
                 {
+                    // Flux de chiffrement AES écrit dans la mémoire
                     using (CryptoStream cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
                     {
+                        // Écriture du texte à chiffrer dans le flux, en UTF-8
                         using (StreamWriter sw = new StreamWriter(cs, Encoding.UTF8))
                         {
                             sw.Write(info);
                         }
+                        // On récupère les données chiffrées dans le buffer mémoire
                         cipher = ms.ToArray();
                     }
                 }
@@ -52,17 +61,23 @@ namespace HospitalManager.BLL
             return cipher;
         }
 
+        #endregion
+
+        #region fonction de déchiffrage des données
         public static string Decrypt(byte[] cipher, byte[] key, byte[] iv)
         {
             string info;
 
             using (Aes aes = Aes.Create())
             {
+                // Création d’un transformateur de déchiffrement avec la clé et le vecteur d’initialisation (IV)
                 ICryptoTransform decryptor = aes.CreateDecryptor(key, iv);
                 using (MemoryStream ms = new MemoryStream(cipher))
                 {
+                    // Flux de chiffrement AES lit dans la mémoire
                     using (CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
                     {
+                        // Lecture du texte à déchiffrer dans le flux, en UTF-8
                         using (StreamReader sr = new StreamReader(cs, Encoding.UTF8))
                         {
                             info = sr.ReadToEnd();
@@ -73,7 +88,9 @@ namespace HospitalManager.BLL
             }
             return info;
         }
+        #endregion
 
+        #region Enregistrement du dictionnaire nécessaire à la lecture des info crypter de utilisateur
 
         public static void SaveIvDictionary(Dictionary<string, string> dict)
         {
@@ -108,7 +125,9 @@ namespace HospitalManager.BLL
             File.WriteAllBytes(ivDictPath, cipher);
 
         }
+        #endregion
 
+        #region Chargement du dictionnaire nécessaire à la lecture des info crypter de utilisateur
 
         public static Dictionary<string, string> getIvDictonnary()
         {
@@ -152,6 +171,6 @@ namespace HospitalManager.BLL
 
             return ivDictonary;
         }
-
+        #endregion
     }
 }

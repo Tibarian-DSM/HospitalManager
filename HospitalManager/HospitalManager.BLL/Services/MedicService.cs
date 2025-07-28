@@ -24,6 +24,7 @@ namespace HospitalManager.BLL.Services
 
         public void addNewMedic(Models.Medic medic)
         {
+            // Hashage du mot de passe via BCrypt
             string hashPsw = BCrypt.Net.BCrypt.HashPassword(medic.Password);
             medic.Password = hashPsw;
             _medicRepository.addNewMedic(medic.MedBllToDal(_userRepository.queryNextId()));

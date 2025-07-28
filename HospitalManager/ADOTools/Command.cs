@@ -11,6 +11,8 @@ namespace ADOTools
     public sealed class Command
     {
         public string Request { get; set; }
+
+        // Dictionnaire pour stocker les paramètres nommés de la commande
         public Dictionary<string, object?> Parameters { get; set; } = new Dictionary<string, object?>();
 
         public Command(string request)
@@ -18,6 +20,7 @@ namespace ADOTools
             Request = request;
         }
 
+        // Méthode pour ajouter ou mettre à jour un paramètre dans le dictionnaire
         public void AddParameter(string name, object? value)
         {
             Parameters[name] = value;

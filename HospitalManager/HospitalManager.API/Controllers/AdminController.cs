@@ -10,6 +10,7 @@ using HospitalManager.API.Mappers;
 using HospitalManager.API.Models.Dtos;
 using HospitalManager.BLL.Services;
 
+// Controller qui s'occupe de la partie Admin
 namespace HospitalManager.API.Controllers
 {
     [Route("api/[controller]")]

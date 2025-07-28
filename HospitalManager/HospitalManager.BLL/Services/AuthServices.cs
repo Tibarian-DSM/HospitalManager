@@ -24,7 +24,7 @@ namespace HospitalManager.BLL.Services
             try
             {
                 string hashedPsw = _authRepository.GetPassword(email);
-
+                //Comparaison du mot de passe hashé et celui qu'on vient de rentré 
                 if(!BCrypt.Net.BCrypt.Verify(password,hashedPsw))
                     {
                         throw new Exception("Incorrect password");
@@ -42,6 +42,7 @@ namespace HospitalManager.BLL.Services
 
         public void RegisterUser(User user)
         {
+            // Hashage du mot de passe via BCrypt
            string hashPsw = BCrypt.Net.BCrypt.HashPassword(user.Password);
             user.Password = hashPsw;
             _authRepository.RegisterUser(user.BLLToDal());

@@ -13,15 +13,21 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Ajout des fichiers de configuration
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 builder.Configuration.AddJsonFile("secrets.json", optional: false, reloadOnChange: true);
 
+#region outils de chiffrement
+// Récupération des secrets et initialisation des outils de chiffrement
 Dictionary<string,string> secrets = builder.Configuration.Get<Dictionary<string,string>>();
 Encryption.init(secrets);
 PatientFileMapper.init(secrets);
 MedicMapper.init(secrets);
+#endregion
 
+
+#region CORS
+//gestion de l'accès à Angular
 builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
 {
     builder.WithOrigins("http://localhost:4200")
@@ -29,8 +35,10 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
            .AllowAnyHeader()
            .AllowCredentials();
 }));
-
+#endregion
 builder.Services.AddControllers();
+
+#region Configuration pour Swagger
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -71,6 +79,10 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+#endregion
+
+#region Injection de dépendances
+//Injection des dépendances
 builder.Services.AddScoped<IAuthService, AuthServices >();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
@@ -91,11 +103,15 @@ builder.Services.AddScoped<IServicesRepository, ServicesRepository>();
 
 builder.Services.AddScoped<IAppointementRepository, AppointementRepository>();
 builder.Services.AddScoped<IAppointementService, AppointementService>();
-
+#endregion
+//Connection à la DB
 builder.Services.AddSingleton(sp => new Connection(builder.Configuration.GetConnectionString("Default")));
+
+//Gestion du JWT
 builder.Services.AddSingleton<TokenManager>();
 
-
+#region Auth JWT
+// Authentification JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -111,13 +127,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
         };
     });
+#endregion
 
+
+// Rate Limit
 #region Rate Limiting
 builder.Services.AddMemoryCache();
 builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
 builder.Services.AddInMemoryRateLimiting();
 builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
 #endregion
+
+// Execution de l'application 
 var app = builder.Build();
 
 

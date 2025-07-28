@@ -12,12 +12,15 @@ namespace ADOTools
 
         }
 
+        // Méthode qui transforme un objet Command (requête + paramètres) en SqlCommand exécutable
         private SqlCommand CreateSqlCommand(SqlConnection connection, Command command)
         {
+            // Crée une commande SQL attachée à la connexion
             SqlCommand sqlCommand = connection.CreateCommand();
+            // Assigne le texte de la commande
             sqlCommand.CommandText = command.Request;
 
-
+            // Ajoute tous les paramètres 
             foreach (KeyValuePair<string, object?> param in command.Parameters)
             {
                 sqlCommand.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
@@ -25,7 +28,7 @@ namespace ADOTools
 
             return sqlCommand;
         }
-
+        #region ExecuteScalar qui permet de retourner un résultat unique
         public object? ExecScalar(Command command)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -38,6 +41,9 @@ namespace ADOTools
                 }
             }
         }
+        #endregion
+
+        #region ExecuteReader permettant de récupérer plusieur ligne ou une seul ligne si on rajoute FirstOrDefault
         public List<TResult> ExecReader<TResult>(Command command, Func<SqlDataReader, TResult> map)
         {
             List<TResult> result = new List<TResult>();
@@ -57,7 +63,9 @@ namespace ADOTools
             }
             return result;
         }
+        #endregion
 
+        #region ExecuteNonQuery permettant l'execution d'une requete ne demandant pas de résultat
         public int ExecNonQuery(Command command)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -69,5 +77,6 @@ namespace ADOTools
                 }
             }
         }
+        #endregion
     }
 }

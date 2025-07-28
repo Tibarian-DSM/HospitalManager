@@ -5,6 +5,7 @@ using HospitalManager.BLL.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+// Controleur qui prend en charge tout ce qui est en rapport avec les rendez-vous
 namespace HospitalManager.API.Controllers
 {
     [Route("api/[controller]")]
