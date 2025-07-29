@@ -52,12 +52,14 @@ namespace HospitalManager.DAL.Repositories
                                         "SET [PhoneNumber] = @PhoneNumber , " +
                                         "[Adress] = @Adress , " +
                                         "[BirthDate] = @BirthDate , " +
-                                        "[MedicalInfo] = @MedicalInfo ");
+                                        "[MedicalInfo] = @MedicalInfo " +
+                                        "WHERE User_Id = @Id");
 
             cmd.AddParameter("PhoneNumber",file.PhoneNumber);
             cmd.AddParameter("Adress", file.Adress);
             cmd.AddParameter("BirthDate", file.Birthdate);
             cmd.AddParameter("MedicalInfo", file.MedicalInfo);
+            cmd.AddParameter("Id", modifierId);
 
             Command Hcmd = new Command("INSERT INTO [dbo].[Patient_Modification]([UpdateDate] , [Patient_Id] , [Employee_Id]) " +
                                          " VALUES (@UpdateDate , @Patient_Id , @User_id)");

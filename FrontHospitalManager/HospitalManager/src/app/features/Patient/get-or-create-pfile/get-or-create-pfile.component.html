@@ -1,11 +1,15 @@
 <div id="info-patient">
+    @if(user)
+    {
+
+   
     <h3>Information d'identification</h3>
     <p>Nom : {{user.lastName}}</p>
     <p>Prenom : {{user.firstName}}</p>
     <p>Email : {{user.email}}</p>
 
     <hr>
-
+    }
     <h3>Dossier du patient</h3>
 @if(patient== null)
 {

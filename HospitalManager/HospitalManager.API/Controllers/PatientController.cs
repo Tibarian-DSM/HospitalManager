@@ -57,6 +57,7 @@ namespace HospitalManager.API.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 return BadRequest(e.Message);
             }
 

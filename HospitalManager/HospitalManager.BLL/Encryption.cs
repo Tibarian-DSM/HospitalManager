@@ -11,8 +11,8 @@ namespace HospitalManager.BLL
 {
     public static class Encryption
     {
-        private static Dictionary<string, string> _paths; 
-        
+        private static Dictionary<string, string> _paths;
+
         //Clé Aes du dictionnaire encrypter
         private static string ivKeyPath;
 
@@ -133,12 +133,12 @@ namespace HospitalManager.BLL
         {
             Dictionary<string, string> ivDictonary = new Dictionary<string, string>();
 
-            if (!File.Exists(ivKeyPath) ||!File.Exists(DictionaryIvPath))
+            if (!File.Exists(ivKeyPath) || !File.Exists(DictionaryIvPath))
             {
                 throw new FileNotFoundException("Un des fichiers de chiffrement est introuvable.");
             }
 
-            if ( !File.Exists(ivDictPath))
+            if (!File.Exists(ivDictPath))
             {
                 SaveIvDictionary(ivDictonary);
             }

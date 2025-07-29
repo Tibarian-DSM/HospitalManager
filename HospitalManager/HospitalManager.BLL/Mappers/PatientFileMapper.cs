@@ -13,27 +13,28 @@ namespace HospitalManager.BLL.Mappers
 
         private static string _keyPath;
         private static byte[] _aesKey;
-   
+
 
         public static void init(Dictionary<string, string> paths)
         {
             _paths = paths;
 
             _keyPath = _paths["PatientKeyPath"];
-            _aesKey= File.ReadAllBytes(_keyPath);
+            _aesKey = File.ReadAllBytes(_keyPath);
 
         }
 
-        public static DAL.Entities.PatientFile BllToDal( this PatientFile file)
+        public static DAL.Entities.PatientFile BllToDal(this PatientFile file)
         {
             byte[] patientIv;
             using (Aes aes = Aes.Create())
             {
-               aes.GenerateIV();
-                patientIv=aes.IV;
+                aes.GenerateIV();
+                patientIv = aes.IV;
             }
 
             Dictionary<string, string> ivDict = Encryption.getIvDictonnary();
+
 
             string newKey = file.User_id.ToString();
             string newIvValue = Convert.ToBase64String(patientIv);
@@ -43,13 +44,13 @@ namespace HospitalManager.BLL.Mappers
             Encryption.SaveIvDictionary(ivDict);
 
             return new DAL.Entities.PatientFile()
-                {
-                   User_id = file.User_id,
-                   PhoneNumber = Encryption.Encrypt(file.PhoneNumber,_aesKey,patientIv),
-                   Adress=Encryption. Encrypt(file.Adress,_aesKey,patientIv),
-                   Birthdate=Encryption.Encrypt(file.Birthdate.ToString("dd/MM/yyyy"),_aesKey,patientIv),
-                   MedicalInfo=Encryption.Encrypt(file.MedicalInfo,_aesKey,patientIv),
-                };
+            {
+                User_id = file.User_id,
+                PhoneNumber = Encryption.Encrypt(file.PhoneNumber, _aesKey, patientIv),
+                Adress = Encryption.Encrypt(file.Adress, _aesKey, patientIv),
+                Birthdate = Encryption.Encrypt(file.Birthdate.ToString("dd/MM/yyyy"), _aesKey, patientIv),
+                MedicalInfo = Encryption.Encrypt(file.MedicalInfo, _aesKey, patientIv),
+            };
         }
 
         public static PatientFile DalToBll(this DAL.Entities.PatientFile file)
@@ -58,7 +59,7 @@ namespace HospitalManager.BLL.Mappers
 
             string userIdKey = file.User_id.ToString();
 
-            if (!ivDict.ContainsKey(userIdKey))
+            if (!ivDict.Equals(userIdKey))
             {
                 throw new KeyNotFoundException($"Aucun IV correspondant trouvé.");
             }
@@ -70,7 +71,7 @@ namespace HospitalManager.BLL.Mappers
                 User_id = file.User_id,
                 PhoneNumber = Encryption.Decrypt(file.PhoneNumber, _aesKey, patientIv),
                 Adress = Encryption.Decrypt(file.Adress, _aesKey, patientIv),
-                Birthdate = DateOnly.ParseExact(Encryption.Decrypt(file.Birthdate, _aesKey, patientIv),"dd/MM/yyyy"),
+                Birthdate = DateOnly.ParseExact(Encryption.Decrypt(file.Birthdate, _aesKey, patientIv), "dd/MM/yyyy"),
                 MedicalInfo = Encryption.Decrypt(file.MedicalInfo, _aesKey, patientIv),
             };
         }
@@ -99,5 +100,5 @@ namespace HospitalManager.BLL.Mappers
             };
         }
 
-    }   
+    }
 }

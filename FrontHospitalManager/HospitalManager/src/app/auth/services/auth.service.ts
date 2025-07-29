@@ -102,7 +102,7 @@ logout():void {
     
     if (typeof sessionStorage !== 'undefined')
     {
-      console.warn(sessionStorage);
+
       return sessionStorage.getItem('token');
     }
  

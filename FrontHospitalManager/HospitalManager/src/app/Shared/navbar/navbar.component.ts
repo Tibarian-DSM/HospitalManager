@@ -13,26 +13,7 @@ export class NavbarComponent {
 
    constructor(public auth:AuthService, private router:Router) {}
 
-    private _currentUser!:any 
-    private _currentUserId!:number 
-
-
    public menuOpen:boolean = false
-
- ngOnInit(): void {
- 
-    if (typeof window !== 'undefined') {
-      const sessionUser = sessionStorage.getItem('user');
-      if (sessionUser) {
-        try {
-          this._currentUser = JSON.parse(sessionUser);
-          this._currentUserId = this._currentUser?.id ?? null;
-        } catch (error) {
-          console.error('Erreur parsing sessionStorage user:', error);
-        }
-      }
-    }
-  }
    
   logout():void{
     this.auth.logout();
@@ -57,12 +38,13 @@ export class NavbarComponent {
 
   redirectPatientAppointement():void
   {
-        this.router.navigate(['/patient-appointements',this._currentUserId]);
+    console.log(this.auth.currentUser?.id)
+        this.router.navigate(['/patient-appointements',this.auth.currentUser?.id]);
   }
 
     redirectMedicAppointement():void
   {
-        this.router.navigate(['/medic-appointements',this._currentUserId]);
+        this.router.navigate(['/medic-appointements',this.auth.currentUser?.id]);
   }
 
   toogleMenu(event:Event)

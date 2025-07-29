@@ -50,8 +50,8 @@ namespace HospitalManager.DAL.Repositories
 
             _connection.ExecNonQuery(scmd);
 
-            Command mcmd = new Command("INSERT INTO [dbo].[Medic]([User_Id], [Inami], [Specialty], [Is_Subsized]) " +
-                                        " VALUES (@User_Id, @Inami , @Specialty , @Is_subsized )");
+            Command mcmd = new Command("INSERT INTO [dbo].[Medic]([User_Id], [Inami], [Specialty], [Is_Subsized]) "+
+                                         "VALUES (@User_Id, @Inami , @Specialty , @Is_subsized )");
             mcmd.AddParameter("User_Id", userId);
             mcmd.AddParameter("Inami", medic.Inami);
             mcmd.AddParameter("Specialty", medic.Speciality);
