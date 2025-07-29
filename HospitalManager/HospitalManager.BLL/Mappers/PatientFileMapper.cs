@@ -59,7 +59,7 @@ namespace HospitalManager.BLL.Mappers
 
             string userIdKey = file.User_id.ToString();
 
-            if (!ivDict.Equals(userIdKey))
+            if (!ivDict.ContainsKey(userIdKey))
             {
                 throw new KeyNotFoundException($"Aucun IV correspondant trouvé.");
             }

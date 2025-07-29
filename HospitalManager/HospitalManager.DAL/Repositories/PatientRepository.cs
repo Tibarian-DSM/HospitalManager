@@ -59,7 +59,7 @@ namespace HospitalManager.DAL.Repositories
             cmd.AddParameter("Adress", file.Adress);
             cmd.AddParameter("BirthDate", file.Birthdate);
             cmd.AddParameter("MedicalInfo", file.MedicalInfo);
-            cmd.AddParameter("Id", modifierId);
+            cmd.AddParameter("Id", file.User_id);
 
             Command Hcmd = new Command("INSERT INTO [dbo].[Patient_Modification]([UpdateDate] , [Patient_Id] , [Employee_Id]) " +
                                          " VALUES (@UpdateDate , @Patient_Id , @User_id)");
